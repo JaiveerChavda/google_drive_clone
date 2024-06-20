@@ -5,7 +5,7 @@ import NavLink from './NavLink.vue';
 </script>
 
 <template>
-    <nav class="min-w-[200px]">
+    <nav class="min-w-[200px] border border-r">
 
         <!-- Logo -->
         <div class="h-[80px] px-3 flex items-center gap-3">
@@ -19,8 +19,8 @@ import NavLink from './NavLink.vue';
         </div>
         <div class="px-3">
             <!-- Todo CreateNewUploadDropdown -->
-            <div class="px-3">
-            <NavLink href="/">My Files</NavLink>
+            <div>
+            <NavLink href="/dashboard" :active="$page.url == '/dashboard'">My Files</NavLink>
             <NavLink href="/">Shared with me</NavLink>
             <NavLink href="/">Shared by me</NavLink>
             <NavLink href="/">Trash</NavLink>
