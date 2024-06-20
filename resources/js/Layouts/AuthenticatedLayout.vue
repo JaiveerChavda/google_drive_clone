@@ -17,7 +17,7 @@ const showingNavigationDropdown = ref(false);
                 <UserSettingsDropdown/>
             </div>
 
-            <div class="flex flex-1 flex-col overflow-hidden">
+            <div class="flex flex-1 flex-col overflow-y-auto">
                 <slot/>
             </div>
         </main>
