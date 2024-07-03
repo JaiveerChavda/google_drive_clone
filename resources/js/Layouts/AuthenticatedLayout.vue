@@ -17,6 +17,10 @@ const showingNavigationDropdown = ref(false);
                 <UserSettingsDropdown/>
             </div>
 
+            <div class="mt-5">
+                <slot name="header"/>
+            </div>
+
             <div class="flex flex-1 flex-col overflow-y-auto">
                 <slot/>
             </div>

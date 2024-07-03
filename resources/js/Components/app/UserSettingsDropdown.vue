@@ -47,8 +47,8 @@ import { ChevronDownIcon,ArrowRightEndOnRectangleIcon,UserIcon,Cog6ToothIcon } f
 
                 <!-- settings -->
                 <!-- <ResponsiveNavLink
-                    :href="route('dashboard')"
-                    active="{{$page.url === route('dashboard')}}"
+                    :href="route('home')"
+                    active="{{$page.url === route('home')}}"
                     class="flex"
                 >
                     <Cog6ToothIcon
