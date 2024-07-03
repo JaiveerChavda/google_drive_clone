@@ -1,5 +1,5 @@
 <script setup>
-import { DocumentPlusIcon, FolderPlusIcon, PlusIcon } from '@heroicons/vue/20/solid';
+import { DocumentPlusIcon, FolderIcon, FolderPlusIcon, PlusIcon } from '@heroicons/vue/20/solid';
 import Dropdown from '@/Components/Dropdown.vue';
 </script>
 <template>
@@ -16,6 +16,11 @@ import Dropdown from '@/Components/Dropdown.vue';
         <!-- upload dropdown content -->
         <template #content>
             <div class="px-4 flex flex-col gap-2 py-2">
+                <a href="/" class="flex items-center gap-2 text-sm py-2 hover:bg-gray-200 px-4 rounded-md">
+                    <FolderIcon class="h-5 w-5 text-gray-600" />
+                    <span>New Folder</span>
+                </a>
+                <hr>
                 <a href="/" class="flex items-center gap-2 text-sm py-2 hover:bg-gray-200 px-4 rounded-md">
                     <DocumentPlusIcon class="h-5 w-5 text-gray-600" />
                     <span>File Upload</span>
