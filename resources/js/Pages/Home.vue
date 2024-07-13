@@ -20,7 +20,7 @@ import FolderLogo from '../../images/folder-logo.png'
                     </div>
 
 
-                    <!-- No Folder exists -->
+                    <!-- Todo:No Folder exists -->
                     <div v-if="false" class="flex flex-col gap-6 items-center justify-center">
                         <img :src="FolderLogo" class="w-[300px] rounded-lg" alt="empty folder logo">
                         <h5 class="font-light text-4xl text-gray-600" >No folder exists</h5>
