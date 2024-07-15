@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProfileController;
 use App\Models\File;
 use Illuminate\Foundation\Application;
@@ -24,6 +25,9 @@ Route::middleware(['auth','verified'])->group(function () {
             'files' => File::all(),
         ]);
     })->name('home');
+
+    Route::post('folder/create',[FileController::class,'storeFolder'])->name('store.folder');
+    Route::resource('files',FileController::class);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

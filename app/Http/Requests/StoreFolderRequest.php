@@ -3,25 +3,10 @@
 namespace App\Http\Requests;
 
 use App\Models\File;
+use Illuminate\Validation\Rule;
 
 class StoreFolderRequest extends ParentFolderRequest
 {
-
-    //get the parent folder
-    public ?File $parent = null;
-
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        $this->parent = File::query()->where('id','=',$this->input('parent_id'))->first();
-
-        if($this->parent && !$this->parent->isRoot() && $this-> )
-
-        return true;
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -29,9 +14,24 @@ class StoreFolderRequest extends ParentFolderRequest
      */
     public function rules(): array
     {
-        return [
-            'name' => ['required','max:100'],
+        return array_merge(
+            parent::rules(),
+            [
+                'name' => ['required', 'max:100',
+                    Rule::unique(File::class, 'name')
+                    ->where('created_by', auth()->id())
+                    ->where('parent_id', $this->parent_id)
+                    ->whereNull('deleted_at'),
+                ],
+            ]
+        );
+    }
 
+    public function messages()
+    {
+        return [
+            'name.unique' => 'Folder ":input" already exists'
         ];
     }
+
 }

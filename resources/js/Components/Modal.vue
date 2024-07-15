@@ -16,12 +16,13 @@ const props = defineProps({
     },
 });
 
-const emit = defineEmits(['close']);
+const emit = defineEmits(['show','close']);
 
 watch(
     () => props.show,
     () => {
         if (props.show) {
+            emit('show');
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = null;

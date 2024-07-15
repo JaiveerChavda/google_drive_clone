@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreFolderRequest;
+use App\Models\File;
 use Illuminate\Http\Request;
 
 class FileController extends Controller
@@ -36,7 +37,19 @@ class FileController extends Controller
      */
     public function storeFolder(StoreFolderRequest $request)
     {
-        $request;
+        $data = $request->validated();
+        $parent = $request->parent;
+
+        if(! $parent){
+            $parent = $this->getRoot();
+        }
+
+        $folder = new File();
+        $folder->name = $data['name'];
+        $folder->is_folder = 1;
+
+        $parent->appendNode($folder);
+
     }
 
 
@@ -71,5 +84,12 @@ class FileController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+    //get the root folder of authorized user
+    public function getRoot()
+    {
+        return File::query()->whereIsRoot()->where('created_by',auth()->id())->firstOrFail();
     }
 }
