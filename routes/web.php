@@ -21,8 +21,15 @@ Route::middleware(['auth','verified'])->group(function () {
 
     //show home page with files
     Route::get('/home',function (){
+
+        $files = File::query()
+                    ->where('created_by',auth()->id())
+                    ->where('is_folder',true)
+                    ->latest()
+                    ->get();
+
         return Inertia::render('Home',[
-            'files' => File::all(),
+            'files' => $files,
         ]);
     })->name('home');
 
